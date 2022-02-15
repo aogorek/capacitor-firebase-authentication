@@ -135,6 +135,7 @@ export class FirebaseAuthenticationWeb
 
   public async signInWithEmailAndPassword(email: string, password: string
   ): Promise<SignInResult> {
+    console.log('signing in with email...')
     const auth = getAuth();
     const result = await signInWithEmailAndPassword(auth, email, password);
     return this.createSignInResult(result.user, null);

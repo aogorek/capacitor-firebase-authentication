@@ -97,6 +97,7 @@ class FirebaseAuthenticationWeb extends core.WebPlugin {
         return this.createSignInResult(result.user, null);
     }
     async signInWithEmailAndPassword(email, password) {
+        console.log('signing in with email...');
         const auth$1 = auth.getAuth();
         const result = await auth.signInWithEmailAndPassword(auth$1, email, password);
         return this.createSignInResult(result.user, null);
