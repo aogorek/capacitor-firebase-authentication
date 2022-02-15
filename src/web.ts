@@ -11,6 +11,7 @@ import {
   OAuthProvider,
   signInWithPopup,
   signInWithCustomToken,
+  signInWithEmailAndPassword
 } from 'firebase/auth';
 
 import type {
@@ -129,6 +130,13 @@ export class FirebaseAuthenticationWeb
   ): Promise<SignInResult> {
     const auth = getAuth();
     const result = await signInWithCustomToken(auth, options.token);
+    return this.createSignInResult(result.user, null);
+  }
+
+  public async signInWithEmailAndPassword(email: string, password: string
+  ): Promise<SignInResult> {
+    const auth = getAuth();
+    const result = await signInWithEmailAndPassword(auth, email, password);
     return this.createSignInResult(result.user, null);
   }
 
