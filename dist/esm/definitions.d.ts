@@ -88,7 +88,7 @@ export interface FirebaseAuthenticationPlugin {
      * This method cannot be used in combination with `skipNativeAuth` on Android and iOS.
      * In this case you have to use the `signInWithCustomToken` interface of the Firebase JS SDK directly.
      */
-    signInWithEmailAndPassword(email: string, password: string): Promise<SignInResult>;
+    signInWithEmailAndPassword(options: SignInWithEmailAndPasswordOptions): Promise<SignInResult>;
     /**
      * Starts the Custom Token sign-in flow.
      *
@@ -176,6 +176,10 @@ export interface SignInWithCustomTokenOptions {
      * The custom token to sign in with.
      */
     token: string;
+}
+export interface SignInWithEmailAndPasswordOptions {
+    email: string;
+    password: string;
 }
 export interface SignInResult {
     /**

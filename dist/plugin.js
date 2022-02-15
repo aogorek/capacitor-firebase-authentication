@@ -92,10 +92,10 @@ var capacitorFirebaseAuthentication = (function (exports, core, auth) {
             const result = await auth.signInWithCustomToken(auth$1, options.token);
             return this.createSignInResult(result.user, null);
         }
-        async signInWithEmailAndPassword(email, password) {
+        async signInWithEmailAndPassword(options) {
             console.log('signing in with email...');
             const auth$1 = auth.getAuth();
-            const result = await auth.signInWithEmailAndPassword(auth$1, email, password);
+            const result = await auth.signInWithEmailAndPassword(auth$1, options.email, options.password);
             return this.createSignInResult(result.user, null);
         }
         async signOut() {

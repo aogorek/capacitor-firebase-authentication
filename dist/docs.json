@@ -227,24 +227,20 @@
       },
       {
         "name": "signInWithEmailAndPassword",
-        "signature": "(email: string, password: string) => Promise<SignInResult>",
+        "signature": "(options: SignInWithEmailAndPasswordOptions) => Promise<SignInResult>",
         "parameters": [
           {
-            "name": "email",
+            "name": "options",
             "docs": "",
-            "type": "string"
-          },
-          {
-            "name": "password",
-            "docs": "",
-            "type": "string"
+            "type": "SignInWithEmailAndPasswordOptions"
           }
         ],
         "returns": "Promise<SignInResult>",
         "tags": [],
         "docs": "Starts the Custom Token sign-in flow.\n\nThis method cannot be used in combination with `skipNativeAuth` on Android and iOS.\nIn this case you have to use the `signInWithCustomToken` interface of the Firebase JS SDK directly.",
         "complexTypes": [
-          "SignInResult"
+          "SignInResult",
+          "SignInWithEmailAndPasswordOptions"
         ],
         "slug": "signinwithemailandpassword"
       },
@@ -618,6 +614,29 @@
           "docs": "The verification code from the SMS message.\nThe `verificationId` must also be provided.",
           "complexTypes": [],
           "type": "string | undefined"
+        }
+      ]
+    },
+    {
+      "name": "SignInWithEmailAndPasswordOptions",
+      "slug": "signinwithemailandpasswordoptions",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "email",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "password",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string"
         }
       ]
     },

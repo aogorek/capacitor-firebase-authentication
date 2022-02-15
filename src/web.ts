@@ -24,6 +24,7 @@ import type {
   SignInResult,
   SignInWithPhoneNumberOptions,
   SignInWithCustomTokenOptions,
+  SignInWithEmailAndPasswordOptions,
   User,
 } from './definitions';
 
@@ -133,11 +134,11 @@ export class FirebaseAuthenticationWeb
     return this.createSignInResult(result.user, null);
   }
 
-  public async signInWithEmailAndPassword(email: string, password: string
+  public async signInWithEmailAndPassword(options: SignInWithEmailAndPasswordOptions
   ): Promise<SignInResult> {
     console.log('signing in with email...')
     const auth = getAuth();
-    const result = await signInWithEmailAndPassword(auth, email, password);
+    const result = await signInWithEmailAndPassword(auth, options.email, options.password);
     return this.createSignInResult(result.user, null);
   }
 

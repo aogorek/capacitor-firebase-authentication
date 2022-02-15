@@ -419,7 +419,7 @@ Only available for Android and iOS.
 ### signInWithEmailAndPassword(...)
 
 ```typescript
-signInWithEmailAndPassword(email: string, password: string) => Promise<SignInResult>
+signInWithEmailAndPassword(options: SignInWithEmailAndPasswordOptions) => Promise<SignInResult>
 ```
 
 Starts the Custom Token sign-in flow.
@@ -427,10 +427,9 @@ Starts the Custom Token sign-in flow.
 This method cannot be used in combination with `skipNativeAuth` on Android and iOS.
 In this case you have to use the `signInWithCustomToken` interface of the Firebase JS SDK directly.
 
-| Param          | Type                |
-| -------------- | ------------------- |
-| **`email`**    | <code>string</code> |
-| **`password`** | <code>string</code> |
+| Param         | Type                                                                                            |
+| ------------- | ----------------------------------------------------------------------------------------------- |
+| **`options`** | <code><a href="#signinwithemailandpasswordoptions">SignInWithEmailAndPasswordOptions</a></code> |
 
 **Returns:** <code>Promise&lt;<a href="#signinresult">SignInResult</a>&gt;</code>
 
@@ -602,6 +601,14 @@ Remove all listeners for this plugin.
 | **`phoneNumber`**      | <code>string</code> | The phone number to be verified.                                                                                                                    |
 | **`verificationId`**   | <code>string</code> | The verification ID which will be returned when `signInWithPhoneNumber` is called for the first time. The `verificationCode` must also be provided. |
 | **`verificationCode`** | <code>string</code> | The verification code from the SMS message. The `verificationId` must also be provided.                                                             |
+
+
+#### SignInWithEmailAndPasswordOptions
+
+| Prop           | Type                |
+| -------------- | ------------------- |
+| **`email`**    | <code>string</code> |
+| **`password`** | <code>string</code> |
 
 
 #### SignInWithCustomTokenOptions
