@@ -200,6 +200,7 @@ const useAppLanguage = async () => {
 * [`signInWithTwitter(...)`](#signinwithtwitter)
 * [`signInWithYahoo(...)`](#signinwithyahoo)
 * [`signInWithPhoneNumber(...)`](#signinwithphonenumber)
+* [`signInWithEmailAndPassword(...)`](#signinwithemailandpassword)
 * [`signInWithCustomToken(...)`](#signinwithcustomtoken)
 * [`signOut()`](#signout)
 * [`useAppLanguage()`](#useapplanguage)
@@ -411,6 +412,27 @@ Only available for Android and iOS.
 | **`options`** | <code><a href="#signinwithphonenumberoptions">SignInWithPhoneNumberOptions</a></code> |
 
 **Returns:** <code>Promise&lt;<a href="#signinwithphonenumberresult">SignInWithPhoneNumberResult</a>&gt;</code>
+
+--------------------
+
+
+### signInWithEmailAndPassword(...)
+
+```typescript
+signInWithEmailAndPassword(email: string, password: string) => Promise<SignInResult>
+```
+
+Starts the Custom Token sign-in flow.
+
+This method cannot be used in combination with `skipNativeAuth` on Android and iOS.
+In this case you have to use the `signInWithCustomToken` interface of the Firebase JS SDK directly.
+
+| Param          | Type                |
+| -------------- | ------------------- |
+| **`email`**    | <code>string</code> |
+| **`password`** | <code>string</code> |
+
+**Returns:** <code>Promise&lt;<a href="#signinresult">SignInResult</a>&gt;</code>
 
 --------------------
 
