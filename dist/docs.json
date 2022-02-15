@@ -1,0 +1,732 @@
+{
+  "api": {
+    "name": "FirebaseAuthenticationPlugin",
+    "slug": "firebaseauthenticationplugin",
+    "docs": "",
+    "tags": [],
+    "methods": [
+      {
+        "name": "getCurrentUser",
+        "signature": "() => Promise<GetCurrentUserResult>",
+        "parameters": [],
+        "returns": "Promise<GetCurrentUserResult>",
+        "tags": [],
+        "docs": "Fetches the currently signed-in user.",
+        "complexTypes": [
+          "GetCurrentUserResult"
+        ],
+        "slug": "getcurrentuser"
+      },
+      {
+        "name": "getIdToken",
+        "signature": "(options?: GetIdTokenOptions | undefined) => Promise<GetIdTokenResult>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "GetIdTokenOptions | undefined"
+          }
+        ],
+        "returns": "Promise<GetIdTokenResult>",
+        "tags": [],
+        "docs": "Fetches the Firebase Auth ID Token for the currently signed-in user.",
+        "complexTypes": [
+          "GetIdTokenResult",
+          "GetIdTokenOptions"
+        ],
+        "slug": "getidtoken"
+      },
+      {
+        "name": "setLanguageCode",
+        "signature": "(options: SetLanguageCodeOptions) => Promise<void>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "SetLanguageCodeOptions"
+          }
+        ],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "Sets the user-facing language code for auth operations.",
+        "complexTypes": [
+          "SetLanguageCodeOptions"
+        ],
+        "slug": "setlanguagecode"
+      },
+      {
+        "name": "signInWithApple",
+        "signature": "(options?: SignInOptions | undefined) => Promise<SignInResult>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "SignInOptions | undefined"
+          }
+        ],
+        "returns": "Promise<SignInResult>",
+        "tags": [],
+        "docs": "Starts the Apple sign-in flow.",
+        "complexTypes": [
+          "SignInResult",
+          "SignInOptions"
+        ],
+        "slug": "signinwithapple"
+      },
+      {
+        "name": "signInWithFacebook",
+        "signature": "(options?: SignInOptions | undefined) => Promise<SignInResult>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "SignInOptions | undefined"
+          }
+        ],
+        "returns": "Promise<SignInResult>",
+        "tags": [],
+        "docs": "Starts the Facebook sign-in flow.",
+        "complexTypes": [
+          "SignInResult",
+          "SignInOptions"
+        ],
+        "slug": "signinwithfacebook"
+      },
+      {
+        "name": "signInWithGithub",
+        "signature": "(options?: SignInOptions | undefined) => Promise<SignInResult>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "SignInOptions | undefined"
+          }
+        ],
+        "returns": "Promise<SignInResult>",
+        "tags": [],
+        "docs": "Starts the GitHub sign-in flow.",
+        "complexTypes": [
+          "SignInResult",
+          "SignInOptions"
+        ],
+        "slug": "signinwithgithub"
+      },
+      {
+        "name": "signInWithGoogle",
+        "signature": "(options?: SignInOptions | undefined) => Promise<SignInResult>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "SignInOptions | undefined"
+          }
+        ],
+        "returns": "Promise<SignInResult>",
+        "tags": [],
+        "docs": "Starts the Google sign-in flow.",
+        "complexTypes": [
+          "SignInResult",
+          "SignInOptions"
+        ],
+        "slug": "signinwithgoogle"
+      },
+      {
+        "name": "signInWithMicrosoft",
+        "signature": "(options?: SignInOptions | undefined) => Promise<SignInResult>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "SignInOptions | undefined"
+          }
+        ],
+        "returns": "Promise<SignInResult>",
+        "tags": [],
+        "docs": "Starts the Microsoft sign-in flow.",
+        "complexTypes": [
+          "SignInResult",
+          "SignInOptions"
+        ],
+        "slug": "signinwithmicrosoft"
+      },
+      {
+        "name": "signInWithPlayGames",
+        "signature": "(options?: SignInOptions | undefined) => Promise<SignInResult>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "SignInOptions | undefined"
+          }
+        ],
+        "returns": "Promise<SignInResult>",
+        "tags": [],
+        "docs": "Starts the Play Games sign-in flow.",
+        "complexTypes": [
+          "SignInResult",
+          "SignInOptions"
+        ],
+        "slug": "signinwithplaygames"
+      },
+      {
+        "name": "signInWithTwitter",
+        "signature": "(options?: SignInOptions | undefined) => Promise<SignInResult>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "SignInOptions | undefined"
+          }
+        ],
+        "returns": "Promise<SignInResult>",
+        "tags": [],
+        "docs": "Starts the Twitter sign-in flow.",
+        "complexTypes": [
+          "SignInResult",
+          "SignInOptions"
+        ],
+        "slug": "signinwithtwitter"
+      },
+      {
+        "name": "signInWithYahoo",
+        "signature": "(options?: SignInOptions | undefined) => Promise<SignInResult>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "SignInOptions | undefined"
+          }
+        ],
+        "returns": "Promise<SignInResult>",
+        "tags": [],
+        "docs": "Starts the Yahoo sign-in flow.",
+        "complexTypes": [
+          "SignInResult",
+          "SignInOptions"
+        ],
+        "slug": "signinwithyahoo"
+      },
+      {
+        "name": "signInWithPhoneNumber",
+        "signature": "(options: SignInWithPhoneNumberOptions) => Promise<SignInWithPhoneNumberResult>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "SignInWithPhoneNumberOptions"
+          }
+        ],
+        "returns": "Promise<SignInWithPhoneNumberResult>",
+        "tags": [],
+        "docs": "Starts the sign-in flow using a phone number.\n\nEither the phone number or the verification code and verification ID must be provided.\n\nOnly available for Android and iOS.",
+        "complexTypes": [
+          "SignInWithPhoneNumberResult",
+          "SignInWithPhoneNumberOptions"
+        ],
+        "slug": "signinwithphonenumber"
+      },
+      {
+        "name": "signInWithEmailAndPassword",
+        "signature": "(email: string, password: string) => Promise<SignInResult>",
+        "parameters": [
+          {
+            "name": "email",
+            "docs": "",
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "docs": "",
+            "type": "string"
+          }
+        ],
+        "returns": "Promise<SignInResult>",
+        "tags": [],
+        "docs": "Starts the Custom Token sign-in flow.\n\nThis method cannot be used in combination with `skipNativeAuth` on Android and iOS.\nIn this case you have to use the `signInWithCustomToken` interface of the Firebase JS SDK directly.",
+        "complexTypes": [
+          "SignInResult"
+        ],
+        "slug": "signinwithemailandpassword"
+      },
+      {
+        "name": "signInWithCustomToken",
+        "signature": "(options: SignInWithCustomTokenOptions) => Promise<SignInResult>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "SignInWithCustomTokenOptions"
+          }
+        ],
+        "returns": "Promise<SignInResult>",
+        "tags": [],
+        "docs": "Starts the Custom Token sign-in flow.\n\nThis method cannot be used in combination with `skipNativeAuth` on Android and iOS.\nIn this case you have to use the `signInWithCustomToken` interface of the Firebase JS SDK directly.",
+        "complexTypes": [
+          "SignInResult",
+          "SignInWithCustomTokenOptions"
+        ],
+        "slug": "signinwithcustomtoken"
+      },
+      {
+        "name": "signOut",
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "Starts the sign-out flow.",
+        "complexTypes": [],
+        "slug": "signout"
+      },
+      {
+        "name": "useAppLanguage",
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "Sets the user-facing language code to be the default app language.",
+        "complexTypes": [],
+        "slug": "useapplanguage"
+      },
+      {
+        "name": "addListener",
+        "signature": "(eventName: 'authStateChange', listenerFunc: AuthStateChangeListener) => Promise<PluginListenerHandle> & PluginListenerHandle",
+        "parameters": [
+          {
+            "name": "eventName",
+            "docs": "",
+            "type": "'authStateChange'"
+          },
+          {
+            "name": "listenerFunc",
+            "docs": "",
+            "type": "AuthStateChangeListener"
+          }
+        ],
+        "returns": "Promise<PluginListenerHandle> & PluginListenerHandle",
+        "tags": [],
+        "docs": "Listen for the user's sign-in state changes.",
+        "complexTypes": [
+          "PluginListenerHandle",
+          "AuthStateChangeListener"
+        ],
+        "slug": "addlistenerauthstatechange"
+      },
+      {
+        "name": "removeAllListeners",
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "Remove all listeners for this plugin.",
+        "complexTypes": [],
+        "slug": "removealllisteners"
+      }
+    ],
+    "properties": []
+  },
+  "interfaces": [
+    {
+      "name": "GetCurrentUserResult",
+      "slug": "getcurrentuserresult",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "user",
+          "tags": [],
+          "docs": "The currently signed-in user, or null if there isn't any.",
+          "complexTypes": [
+            "User"
+          ],
+          "type": "User | null"
+        }
+      ]
+    },
+    {
+      "name": "User",
+      "slug": "user",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "displayName",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string | null"
+        },
+        {
+          "name": "email",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string | null"
+        },
+        {
+          "name": "emailVerified",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "boolean"
+        },
+        {
+          "name": "isAnonymous",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "boolean"
+        },
+        {
+          "name": "phoneNumber",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string | null"
+        },
+        {
+          "name": "photoUrl",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string | null"
+        },
+        {
+          "name": "providerId",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "tenantId",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string | null"
+        },
+        {
+          "name": "uid",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "GetIdTokenResult",
+      "slug": "getidtokenresult",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "token",
+          "tags": [],
+          "docs": "The Firebase Auth ID token JWT string.",
+          "complexTypes": [],
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "GetIdTokenOptions",
+      "slug": "getidtokenoptions",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "forceRefresh",
+          "tags": [],
+          "docs": "Force refresh regardless of token expiration.",
+          "complexTypes": [],
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "name": "SetLanguageCodeOptions",
+      "slug": "setlanguagecodeoptions",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "languageCode",
+          "tags": [],
+          "docs": "BCP 47 language code.\n\nExample: `en-US`.",
+          "complexTypes": [],
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "SignInResult",
+      "slug": "signinresult",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "user",
+          "tags": [],
+          "docs": "The currently signed-in user, or null if there isn't any.",
+          "complexTypes": [
+            "User"
+          ],
+          "type": "User | null"
+        },
+        {
+          "name": "credential",
+          "tags": [],
+          "docs": "Credentials returned by an auth provider.",
+          "complexTypes": [
+            "AuthCredential"
+          ],
+          "type": "AuthCredential | null"
+        }
+      ]
+    },
+    {
+      "name": "AuthCredential",
+      "slug": "authcredential",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "providerId",
+          "tags": [],
+          "docs": "The authentication provider ID for the credential.\n\nExample: `google.com`.",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "accessToken",
+          "tags": [],
+          "docs": "The OAuth access token associated with the credential if it belongs to an OAuth provider.",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "idToken",
+          "tags": [],
+          "docs": "The OAuth ID token associated with the credential if it belongs to an OIDC provider.",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "secret",
+          "tags": [],
+          "docs": "The OAuth access token secret associated with the credential if it belongs to an OAuth 1.0 provider.",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "nonce",
+          "tags": [],
+          "docs": "The random string used to make sure that the ID token you get was granted specifically in response to your app's authentication request.",
+          "complexTypes": [],
+          "type": "string | undefined"
+        }
+      ]
+    },
+    {
+      "name": "SignInOptions",
+      "slug": "signinoptions",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "customParameters",
+          "tags": [],
+          "docs": "Configures custom parameters to be passed to the identity provider during the OAuth sign-in flow.",
+          "complexTypes": [
+            "SignInCustomParameter"
+          ],
+          "type": "SignInCustomParameter[] | undefined"
+        }
+      ]
+    },
+    {
+      "name": "SignInCustomParameter",
+      "slug": "signincustomparameter",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "key",
+          "tags": [],
+          "docs": "The custom parameter key (e.g. `login_hint`).",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "tags": [],
+          "docs": "The custom parameter value (e.g. `user@firstadd.onmicrosoft.com`).",
+          "complexTypes": [],
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "SignInWithPhoneNumberResult",
+      "slug": "signinwithphonenumberresult",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "verificationId",
+          "tags": [],
+          "docs": "The verification ID, which is needed to identify the verification code.",
+          "complexTypes": [],
+          "type": "string | undefined"
+        }
+      ]
+    },
+    {
+      "name": "SignInWithPhoneNumberOptions",
+      "slug": "signinwithphonenumberoptions",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "phoneNumber",
+          "tags": [],
+          "docs": "The phone number to be verified.",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "verificationId",
+          "tags": [],
+          "docs": "The verification ID which will be returned when `signInWithPhoneNumber` is called for the first time.\nThe `verificationCode` must also be provided.",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "verificationCode",
+          "tags": [],
+          "docs": "The verification code from the SMS message.\nThe `verificationId` must also be provided.",
+          "complexTypes": [],
+          "type": "string | undefined"
+        }
+      ]
+    },
+    {
+      "name": "SignInWithCustomTokenOptions",
+      "slug": "signinwithcustomtokenoptions",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "token",
+          "tags": [],
+          "docs": "The custom token to sign in with.",
+          "complexTypes": [],
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "PluginListenerHandle",
+      "slug": "pluginlistenerhandle",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "remove",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "() => Promise<void>"
+        }
+      ]
+    },
+    {
+      "name": "AuthStateChange",
+      "slug": "authstatechange",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "user",
+          "tags": [],
+          "docs": "The currently signed-in user, or null if there isn't any.",
+          "complexTypes": [
+            "User"
+          ],
+          "type": "User | null"
+        }
+      ]
+    }
+  ],
+  "enums": [],
+  "typeAliases": [
+    {
+      "name": "AuthStateChangeListener",
+      "slug": "authstatechangelistener",
+      "docs": "Callback to receive the user's sign-in state change notifications.",
+      "types": [
+        {
+          "text": "(change: AuthStateChange): void",
+          "complexTypes": [
+            "AuthStateChange"
+          ]
+        }
+      ]
+    }
+  ],
+  "pluginConfigs": [
+    {
+      "name": "FirebaseAuthentication",
+      "slug": "firebaseauthentication",
+      "properties": [
+        {
+          "name": "skipNativeAuth",
+          "tags": [
+            {
+              "text": "false",
+              "name": "default"
+            },
+            {
+              "text": "false",
+              "name": "example"
+            }
+          ],
+          "docs": "Configure whether the plugin should skip the native authentication.\nOnly needed if you want to use the Firebase JavaScript SDK.\n\nOnly available for Android and iOS.",
+          "complexTypes": [],
+          "type": "boolean | undefined"
+        },
+        {
+          "name": "providers",
+          "tags": [
+            {
+              "text": "[\"apple.com\", \"facebook.com\", \"github.com\", \"google.com\", \"microsoft.com\", \"playgames.google.com\", \"twitter.com\", \"yahoo.com\", \"phone\"]",
+              "name": "default"
+            },
+            {
+              "text": "[\"apple.com\", \"google.com\"]",
+              "name": "example"
+            }
+          ],
+          "docs": "Configure which providers you want to use so that only the providers you need are fully initialized.\nIf you do not configure any providers, they will be all initialized.\nPlease note that this does not prevent the automatic initialization of third-party SDKs.\n\nOnly available for Android and iOS.",
+          "complexTypes": [],
+          "type": "string[] | undefined"
+        }
+      ],
+      "docs": "These configuration values are available:"
+    }
+  ]
+}
