@@ -1,5 +1,5 @@
 import { WebPlugin } from '@capacitor/core';
-import type { FirebaseAuthenticationPlugin, GetCurrentUserResult, GetIdTokenResult, SetLanguageCodeOptions, SignInResult, SignInWithPhoneNumberOptions, SignInWithCustomTokenOptions, SignInWithEmailAndPasswordOptions } from './definitions';
+import type { FirebaseAuthenticationPlugin, GetCurrentUserResult, GetIdTokenResult, SetLanguageCodeOptions, SignInResult, SignInWithPhoneNumberOptions, SignInWithCustomTokenOptions, SignInWithEmailAndPasswordOptions, User } from './definitions';
 export declare class FirebaseAuthenticationWeb extends WebPlugin implements FirebaseAuthenticationPlugin {
     constructor();
     getCurrentUser(): Promise<GetCurrentUserResult>;
@@ -16,6 +16,8 @@ export declare class FirebaseAuthenticationWeb extends WebPlugin implements Fire
     signInWithPhoneNumber(_options: SignInWithPhoneNumberOptions): Promise<SignInResult>;
     signInWithCustomToken(options: SignInWithCustomTokenOptions): Promise<SignInResult>;
     signInWithEmailAndPassword(options: SignInWithEmailAndPasswordOptions): Promise<SignInResult>;
+    sendPasswordResetEmail(email: string): Promise<void>;
+    createUserWithEmailAndPassword(email: string, password: string): Promise<User | null>;
     signOut(): Promise<void>;
     useAppLanguage(): Promise<void>;
     private handleAuthStateChange;

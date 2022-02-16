@@ -2,6 +2,7 @@
 
 import type { PluginListenerHandle } from '@capacitor/core';
 
+
 declare module '@capacitor/cli' {
   export interface PluginsConfig {
     /**
@@ -96,6 +97,12 @@ export interface FirebaseAuthenticationPlugin {
    */
   signInWithEmailAndPassword(options: SignInWithEmailAndPasswordOptions
   ): Promise<SignInResult>;
+
+  sendPasswordResetEmail(email: string
+  ): Promise<void>;
+
+  createUserWithEmailAndPassword(email: string, password: string
+  ): Promise<User|null>
   /**
    * Starts the Custom Token sign-in flow.
    *
@@ -196,8 +203,6 @@ export interface SignInWithCustomTokenOptions {
    * The custom token to sign in with.
    */
   token: string;
-  email: string;
-  password: string;
 }
 
 export interface SignInWithEmailAndPasswordOptions {

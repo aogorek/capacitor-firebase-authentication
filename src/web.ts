@@ -1,8 +1,4 @@
 import { WebPlugin } from '@capacitor/core';
-import type {
-  AuthCredential as FirebaseAuthCredential,
-  User as FirebaseUser,
-} from 'firebase/auth';
 import {
   FacebookAuthProvider,
   getAuth,
@@ -10,8 +6,12 @@ import {
   OAuthCredential,
   OAuthProvider,
   signInWithPopup,
-  // signInWithCustomToken,
-  signInWithEmailAndPassword
+  signInWithCustomToken,
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
+  createUserWithEmailAndPassword,
+  AuthCredential as FirebaseAuthCredential,
+  User as FirebaseUser,
 } from 'firebase/auth';
 
 import type {
@@ -27,6 +27,7 @@ import type {
   SignInWithEmailAndPasswordOptions,
   User,
 } from './definitions';
+import {sendEmailVerification} from '@firebase/auth';
 
 export class FirebaseAuthenticationWeb
   extends WebPlugin
@@ -129,9 +130,8 @@ export class FirebaseAuthenticationWeb
   public async signInWithCustomToken(
     options: SignInWithCustomTokenOptions,
   ): Promise<SignInResult> {
-    console.log('custom token');
     const auth = getAuth();
-    const result = await signInWithEmailAndPassword(auth, options.email, options.password);
+    const result = await signInWithCustomToken(auth, options.token);
     return this.createSignInResult(result.user, null);
   }
 
@@ -141,6 +141,21 @@ export class FirebaseAuthenticationWeb
     const auth = getAuth();
     const result = await signInWithEmailAndPassword(auth, options.email, options.password);
     return this.createSignInResult(result.user, null);
+  }
+
+  public async sendPasswordResetEmail(email: string
+  ): Promise<void> {
+    console.log('sending reset email...')
+    const auth = getAuth();
+    return sendPasswordResetEmail(auth, email);
+  }
+  public async createUserWithEmailAndPassword(email: string, password: string
+  ): Promise<User|null> {
+    console.log('creating user')
+    const auth = getAuth();
+    const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
+    await sendEmailVerification(userCredentials.user);
+    return this.createUserResult(userCredentials.user);
   }
 
   public async signOut(): Promise<void> {

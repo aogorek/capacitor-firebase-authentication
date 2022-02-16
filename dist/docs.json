@@ -245,6 +245,45 @@
         "slug": "signinwithemailandpassword"
       },
       {
+        "name": "sendPasswordResetEmail",
+        "signature": "(email: string) => Promise<void>",
+        "parameters": [
+          {
+            "name": "email",
+            "docs": "",
+            "type": "string"
+          }
+        ],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "",
+        "complexTypes": [],
+        "slug": "sendpasswordresetemail"
+      },
+      {
+        "name": "createUserWithEmailAndPassword",
+        "signature": "(email: string, password: string) => Promise<User | null>",
+        "parameters": [
+          {
+            "name": "email",
+            "docs": "",
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "docs": "",
+            "type": "string"
+          }
+        ],
+        "returns": "Promise<User | null>",
+        "tags": [],
+        "docs": "",
+        "complexTypes": [
+          "User"
+        ],
+        "slug": "createuserwithemailandpassword"
+      },
+      {
         "name": "signInWithCustomToken",
         "signature": "(options: SignInWithCustomTokenOptions) => Promise<SignInResult>",
         "parameters": [
@@ -651,20 +690,6 @@
           "name": "token",
           "tags": [],
           "docs": "The custom token to sign in with.",
-          "complexTypes": [],
-          "type": "string"
-        },
-        {
-          "name": "email",
-          "tags": [],
-          "docs": "",
-          "complexTypes": [],
-          "type": "string"
-        },
-        {
-          "name": "password",
-          "tags": [],
-          "docs": "",
           "complexTypes": [],
           "type": "string"
         }

@@ -4,6 +4,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var core = require('@capacitor/core');
 var auth = require('firebase/auth');
+var auth$1 = require('@firebase/auth');
 
 const FirebaseAuthentication = core.registerPlugin('FirebaseAuthentication', {
     web: () => Promise.resolve().then(function () { return web; }).then(m => new m.FirebaseAuthenticationWeb()),
@@ -92,9 +93,8 @@ class FirebaseAuthenticationWeb extends core.WebPlugin {
         throw new Error('Not implemented on web.');
     }
     async signInWithCustomToken(options) {
-        console.log('custom token');
         const auth$1 = auth.getAuth();
-        const result = await auth.signInWithEmailAndPassword(auth$1, options.email, options.password);
+        const result = await auth.signInWithCustomToken(auth$1, options.token);
         return this.createSignInResult(result.user, null);
     }
     async signInWithEmailAndPassword(options) {
@@ -102,6 +102,18 @@ class FirebaseAuthenticationWeb extends core.WebPlugin {
         const auth$1 = auth.getAuth();
         const result = await auth.signInWithEmailAndPassword(auth$1, options.email, options.password);
         return this.createSignInResult(result.user, null);
+    }
+    async sendPasswordResetEmail(email) {
+        console.log('sending reset email...');
+        const auth$1 = auth.getAuth();
+        return auth.sendPasswordResetEmail(auth$1, email);
+    }
+    async createUserWithEmailAndPassword(email, password) {
+        console.log('creating user');
+        const auth$2 = auth.getAuth();
+        const userCredentials = await auth.createUserWithEmailAndPassword(auth$2, email, password);
+        await auth$1.sendEmailVerification(userCredentials.user);
+        return this.createUserResult(userCredentials.user);
     }
     async signOut() {
         const auth$1 = auth.getAuth();

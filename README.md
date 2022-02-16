@@ -201,6 +201,8 @@ const useAppLanguage = async () => {
 * [`signInWithYahoo(...)`](#signinwithyahoo)
 * [`signInWithPhoneNumber(...)`](#signinwithphonenumber)
 * [`signInWithEmailAndPassword(...)`](#signinwithemailandpassword)
+* [`sendPasswordResetEmail(...)`](#sendpasswordresetemail)
+* [`createUserWithEmailAndPassword(...)`](#createuserwithemailandpassword)
 * [`signInWithCustomToken(...)`](#signinwithcustomtoken)
 * [`signOut()`](#signout)
 * [`useAppLanguage()`](#useapplanguage)
@@ -436,6 +438,35 @@ In this case you have to use the `signInWithCustomToken` interface of the Fireba
 --------------------
 
 
+### sendPasswordResetEmail(...)
+
+```typescript
+sendPasswordResetEmail(email: string) => Promise<void>
+```
+
+| Param       | Type                |
+| ----------- | ------------------- |
+| **`email`** | <code>string</code> |
+
+--------------------
+
+
+### createUserWithEmailAndPassword(...)
+
+```typescript
+createUserWithEmailAndPassword(email: string, password: string) => Promise<User | null>
+```
+
+| Param          | Type                |
+| -------------- | ------------------- |
+| **`email`**    | <code>string</code> |
+| **`password`** | <code>string</code> |
+
+**Returns:** <code>Promise&lt;<a href="#user">User</a> | null&gt;</code>
+
+--------------------
+
+
 ### signInWithCustomToken(...)
 
 ```typescript
@@ -613,11 +644,9 @@ Remove all listeners for this plugin.
 
 #### SignInWithCustomTokenOptions
 
-| Prop           | Type                | Description                       |
-| -------------- | ------------------- | --------------------------------- |
-| **`token`**    | <code>string</code> | The custom token to sign in with. |
-| **`email`**    | <code>string</code> |                                   |
-| **`password`** | <code>string</code> |                                   |
+| Prop        | Type                | Description                       |
+| ----------- | ------------------- | --------------------------------- |
+| **`token`** | <code>string</code> | The custom token to sign in with. |
 
 
 #### PluginListenerHandle

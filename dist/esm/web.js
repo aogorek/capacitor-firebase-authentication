@@ -1,7 +1,6 @@
 import { WebPlugin } from '@capacitor/core';
-import { FacebookAuthProvider, getAuth, GoogleAuthProvider, OAuthCredential, OAuthProvider, signInWithPopup, 
-// signInWithCustomToken,
-signInWithEmailAndPassword } from 'firebase/auth';
+import { FacebookAuthProvider, getAuth, GoogleAuthProvider, OAuthCredential, OAuthProvider, signInWithPopup, signInWithCustomToken, signInWithEmailAndPassword, sendPasswordResetEmail, createUserWithEmailAndPassword, } from 'firebase/auth';
+import { sendEmailVerification } from '@firebase/auth';
 export class FirebaseAuthenticationWeb extends WebPlugin {
     constructor() {
         super();
@@ -85,9 +84,8 @@ export class FirebaseAuthenticationWeb extends WebPlugin {
         throw new Error('Not implemented on web.');
     }
     async signInWithCustomToken(options) {
-        console.log('custom token');
         const auth = getAuth();
-        const result = await signInWithEmailAndPassword(auth, options.email, options.password);
+        const result = await signInWithCustomToken(auth, options.token);
         return this.createSignInResult(result.user, null);
     }
     async signInWithEmailAndPassword(options) {
@@ -95,6 +93,18 @@ export class FirebaseAuthenticationWeb extends WebPlugin {
         const auth = getAuth();
         const result = await signInWithEmailAndPassword(auth, options.email, options.password);
         return this.createSignInResult(result.user, null);
+    }
+    async sendPasswordResetEmail(email) {
+        console.log('sending reset email...');
+        const auth = getAuth();
+        return sendPasswordResetEmail(auth, email);
+    }
+    async createUserWithEmailAndPassword(email, password) {
+        console.log('creating user');
+        const auth = getAuth();
+        const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
+        await sendEmailVerification(userCredentials.user);
+        return this.createUserResult(userCredentials.user);
     }
     async signOut() {
         const auth = getAuth();
