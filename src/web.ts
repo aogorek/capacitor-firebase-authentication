@@ -129,6 +129,7 @@ export class FirebaseAuthenticationWeb
   public async signInWithCustomToken(
     options: SignInWithCustomTokenOptions,
   ): Promise<SignInResult> {
+    console.log('custom token');
     const auth = getAuth();
     const result = await signInWithEmailAndPassword(auth, options.email, options.password);
     return this.createSignInResult(result.user, null);

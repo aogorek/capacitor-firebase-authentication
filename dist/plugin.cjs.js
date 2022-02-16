@@ -92,6 +92,7 @@ class FirebaseAuthenticationWeb extends core.WebPlugin {
         throw new Error('Not implemented on web.');
     }
     async signInWithCustomToken(options) {
+        console.log('custom token');
         const auth$1 = auth.getAuth();
         const result = await auth.signInWithEmailAndPassword(auth$1, options.email, options.password);
         return this.createSignInResult(result.user, null);
