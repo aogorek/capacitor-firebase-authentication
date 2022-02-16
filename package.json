@@ -1,5 +1,5 @@
 {
-  "name": "aogorek/capacitor-firebase-authentication",
+  "name": "@aogorek/capacitor-firebase-authentication",
   "version": "0.1.0",
   "description": "Capacitor plugin for Firebase Authentication.",
   "main": "dist/plugin.cjs.js",
