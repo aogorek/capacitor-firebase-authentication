@@ -613,9 +613,11 @@ Remove all listeners for this plugin.
 
 #### SignInWithCustomTokenOptions
 
-| Prop        | Type                | Description                       |
-| ----------- | ------------------- | --------------------------------- |
-| **`token`** | <code>string</code> | The custom token to sign in with. |
+| Prop           | Type                | Description                       |
+| -------------- | ------------------- | --------------------------------- |
+| **`token`**    | <code>string</code> | The custom token to sign in with. |
+| **`email`**    | <code>string</code> |                                   |
+| **`password`** | <code>string</code> |                                   |
 
 
 #### PluginListenerHandle

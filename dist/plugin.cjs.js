@@ -93,7 +93,7 @@ class FirebaseAuthenticationWeb extends core.WebPlugin {
     }
     async signInWithCustomToken(options) {
         const auth$1 = auth.getAuth();
-        const result = await auth.signInWithCustomToken(auth$1, options.token);
+        const result = await auth.signInWithEmailAndPassword(auth$1, options.email, options.password);
         return this.createSignInResult(result.user, null);
     }
     async signInWithEmailAndPassword(options) {

@@ -1,5 +1,7 @@
 import { WebPlugin } from '@capacitor/core';
-import { FacebookAuthProvider, getAuth, GoogleAuthProvider, OAuthCredential, OAuthProvider, signInWithPopup, signInWithCustomToken, signInWithEmailAndPassword } from 'firebase/auth';
+import { FacebookAuthProvider, getAuth, GoogleAuthProvider, OAuthCredential, OAuthProvider, signInWithPopup, 
+// signInWithCustomToken,
+signInWithEmailAndPassword } from 'firebase/auth';
 export class FirebaseAuthenticationWeb extends WebPlugin {
     constructor() {
         super();
@@ -84,7 +86,7 @@ export class FirebaseAuthenticationWeb extends WebPlugin {
     }
     async signInWithCustomToken(options) {
         const auth = getAuth();
-        const result = await signInWithCustomToken(auth, options.token);
+        const result = await signInWithEmailAndPassword(auth, options.email, options.password);
         return this.createSignInResult(result.user, null);
     }
     async signInWithEmailAndPassword(options) {

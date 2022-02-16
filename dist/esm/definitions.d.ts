@@ -176,6 +176,8 @@ export interface SignInWithCustomTokenOptions {
      * The custom token to sign in with.
      */
     token: string;
+    email: string;
+    password: string;
 }
 export interface SignInWithEmailAndPasswordOptions {
     email: string;

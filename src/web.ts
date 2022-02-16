@@ -10,7 +10,7 @@ import {
   OAuthCredential,
   OAuthProvider,
   signInWithPopup,
-  signInWithCustomToken,
+  // signInWithCustomToken,
   signInWithEmailAndPassword
 } from 'firebase/auth';
 
@@ -130,7 +130,7 @@ export class FirebaseAuthenticationWeb
     options: SignInWithCustomTokenOptions,
   ): Promise<SignInResult> {
     const auth = getAuth();
-    const result = await signInWithCustomToken(auth, options.token);
+    const result = await signInWithEmailAndPassword(auth, options.email, options.password);
     return this.createSignInResult(result.user, null);
   }
 
