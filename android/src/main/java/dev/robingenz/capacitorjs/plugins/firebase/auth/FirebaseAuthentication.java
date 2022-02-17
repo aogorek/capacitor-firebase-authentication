@@ -218,6 +218,7 @@ public class FirebaseAuthentication {
                             if (task.isSuccessful()) {
                                 Log.d(FirebaseAuthenticationPlugin.TAG, "createUserWithEmailAndPassword succeeded.");
                                 FirebaseUser user = getCurrentUser();
+                                user.sendEmailVerification();
                                 JSObject signInResult = FirebaseAuthenticationHelper.createSignInResult(user, null, null);
                                 call.resolve(signInResult);
                             } else {

@@ -16,8 +16,8 @@ export declare class FirebaseAuthenticationWeb extends WebPlugin implements Fire
     signInWithPhoneNumber(_options: SignInWithPhoneNumberOptions): Promise<SignInResult>;
     signInWithCustomToken(options: SignInWithCustomTokenOptions): Promise<SignInResult>;
     signInWithEmailAndPassword(options: SignInWithEmailAndPasswordOptions): Promise<SignInResult>;
-    sendPasswordResetEmail(email: string): Promise<void>;
-    createUserWithEmailAndPassword(email: string, password: string): Promise<User | null>;
+    sendPasswordResetEmail(options: SignInWithEmailAndPasswordOptions): Promise<void>;
+    createUserWithEmailAndPassword(options: SignInWithEmailAndPasswordOptions): Promise<User | null>;
     signOut(): Promise<void>;
     useAppLanguage(): Promise<void>;
     private handleAuthStateChange;

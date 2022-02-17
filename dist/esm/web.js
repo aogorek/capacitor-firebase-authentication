@@ -94,15 +94,15 @@ export class FirebaseAuthenticationWeb extends WebPlugin {
         const result = await signInWithEmailAndPassword(auth, options.email, options.password);
         return this.createSignInResult(result.user, null);
     }
-    async sendPasswordResetEmail(email) {
+    async sendPasswordResetEmail(options) {
         console.log('sending reset email...');
         const auth = getAuth();
-        return sendPasswordResetEmail(auth, email);
+        return sendPasswordResetEmail(auth, options.email);
     }
-    async createUserWithEmailAndPassword(email, password) {
+    async createUserWithEmailAndPassword(options) {
         console.log('creating user');
         const auth = getAuth();
-        const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
+        const userCredentials = await createUserWithEmailAndPassword(auth, options.email, options.password);
         await sendEmailVerification(userCredentials.user);
         return this.createUserResult(userCredentials.user);
     }

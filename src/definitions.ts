@@ -98,10 +98,10 @@ export interface FirebaseAuthenticationPlugin {
   signInWithEmailAndPassword(options: SignInWithEmailAndPasswordOptions
   ): Promise<SignInResult>;
 
-  sendPasswordResetEmail(email: string
+  sendPasswordResetEmail(options: SignInWithEmailAndPasswordOptions
   ): Promise<void>;
 
-  createUserWithEmailAndPassword(email: string, password: string
+  createUserWithEmailAndPassword(options: SignInWithEmailAndPasswordOptions
   ): Promise<User|null>
   /**
    * Starts the Custom Token sign-in flow.

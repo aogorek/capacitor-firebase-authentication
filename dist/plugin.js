@@ -98,15 +98,15 @@ var capacitorFirebaseAuthentication = (function (exports, core, auth, auth$1) {
             const result = await auth.signInWithEmailAndPassword(auth$1, options.email, options.password);
             return this.createSignInResult(result.user, null);
         }
-        async sendPasswordResetEmail(email) {
+        async sendPasswordResetEmail(options) {
             console.log('sending reset email...');
             const auth$1 = auth.getAuth();
-            return auth.sendPasswordResetEmail(auth$1, email);
+            return auth.sendPasswordResetEmail(auth$1, options.email);
         }
-        async createUserWithEmailAndPassword(email, password) {
+        async createUserWithEmailAndPassword(options) {
             console.log('creating user');
             const auth$2 = auth.getAuth();
-            const userCredentials = await auth.createUserWithEmailAndPassword(auth$2, email, password);
+            const userCredentials = await auth.createUserWithEmailAndPassword(auth$2, options.email, options.password);
             await auth$1.sendEmailVerification(userCredentials.user);
             return this.createUserResult(userCredentials.user);
         }
