@@ -170,6 +170,41 @@ public class FirebaseAuthentication {
             );
     }
 
+    public void signInWithEmailAndPassword(PluginCall call) {
+
+        String email = call.getString("email", "");
+        String password = call.getString("password", "");
+
+        firebaseAuthInstance
+                .signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(
+                        plugin.getActivity(),
+                        new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    Log.d(FirebaseAuthenticationPlugin.TAG, "signInWithEmailAndPassword succeeded.");
+                                    FirebaseUser user = getCurrentUser();
+                                    JSObject signInResult = FirebaseAuthenticationHelper.createSignInResult(user, null, null);
+                                    call.resolve(signInResult);
+                                } else {
+                                    Log.e(FirebaseAuthenticationPlugin.TAG, "signInWithEmailAndPassword failed.", task.getException());
+                                    call.reject(ERROR_SIGN_IN_FAILED);
+                                }
+                            }
+                        }
+                )
+                .addOnFailureListener(
+                        plugin.getActivity(),
+                        new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception exception) {
+                                Log.e(FirebaseAuthenticationPlugin.TAG, "signInWithEmailAndPassword failed.", exception);
+                                call.reject(ERROR_SIGN_IN_FAILED);
+                            }
+                        }
+                );
+    }
     public void signOut(PluginCall call) {
         FirebaseAuth.getInstance().signOut();
         if (googleAuthProviderHandler != null) {

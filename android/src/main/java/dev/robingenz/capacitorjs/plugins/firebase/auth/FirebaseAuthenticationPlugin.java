@@ -125,6 +125,11 @@ public class FirebaseAuthenticationPlugin extends Plugin {
     }
 
     @PluginMethod
+    public void signInWithEmailAndPassword(PluginCall call) {
+        implementation.signInWithEmailAndPassword(call);
+    }
+
+    @PluginMethod
     public void signOut(PluginCall call) {
         implementation.signOut(call);
     }
