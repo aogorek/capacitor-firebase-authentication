@@ -33,6 +33,8 @@ public class FirebaseAuthentication {
     private AuthStateChangeListener authStateChangeListener;
 
     public static final String ERROR_SIGN_IN_FAILED = "signIn failed.";
+    public static final String CREATE_ACCOUNT_FAILED = "createAccount failed.";
+    public static final String PASSWORD_RESET_FAILED = "passwordReset failed.";
     public static final String ERROR_CUSTOM_TOKEN_SKIP_NATIVE_AUTH =
         "signInWithCustomToken cannot be used in combination with skipNativeAuth.";
     private FirebaseAuthenticationPlugin plugin;
@@ -205,6 +207,62 @@ public class FirebaseAuthentication {
                         }
                 );
     }
+    public void createUserWithEmailAndPassword(PluginCall call) {
+        String email = call.getString("email", "");
+        String password = call.getString("password", "");
+        firebaseAuthInstance
+                .createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(
+                        plugin.getActivity(),
+                        task -> {
+                            if (task.isSuccessful()) {
+                                Log.d(FirebaseAuthenticationPlugin.TAG, "createUserWithEmailAndPassword succeeded.");
+                                FirebaseUser user = getCurrentUser();
+                                JSObject signInResult = FirebaseAuthenticationHelper.createSignInResult(user, null, null);
+                                call.resolve(signInResult);
+                            } else {
+                                Log.e(FirebaseAuthenticationPlugin.TAG, "createUserWithEmailAndPassword failed.", task.getException());
+                                call.reject(CREATE_ACCOUNT_FAILED);
+                            }
+                        }
+                )
+                .addOnFailureListener(
+                        plugin.getActivity(),
+                        exception -> {
+                            Log.e(FirebaseAuthenticationPlugin.TAG, "createUserWithEmailAndPassword failed.", exception);
+                            call.reject(CREATE_ACCOUNT_FAILED);
+                        }
+                );
+    }
+
+
+    public void sendPasswordResetEmail(PluginCall call) {
+        String email = call.getString("email", "");
+        firebaseAuthInstance
+                .sendPasswordResetEmail(email)
+                .addOnCompleteListener(
+                        plugin.getActivity(),
+                        (OnCompleteListener) task -> {
+                            if (task.isSuccessful()) {
+                                Log.d(FirebaseAuthenticationPlugin.TAG, "sendPasswordResetEmail succeeded.");
+                                call.resolve();
+                            } else {
+                                Log.e(FirebaseAuthenticationPlugin.TAG, "sendPasswordResetEmail failed.", task.getException());
+                                call.reject(PASSWORD_RESET_FAILED);
+                            }
+                        }
+                )
+                .addOnFailureListener(
+                        plugin.getActivity(),
+                        exception -> {
+                            Log.e(FirebaseAuthenticationPlugin.TAG, "sendPasswordResetEmail failed.", exception);
+                            call.reject(PASSWORD_RESET_FAILED);
+                        }
+                );
+
+    }
+
+
     public void signOut(PluginCall call) {
         FirebaseAuth.getInstance().signOut();
         if (googleAuthProviderHandler != null) {

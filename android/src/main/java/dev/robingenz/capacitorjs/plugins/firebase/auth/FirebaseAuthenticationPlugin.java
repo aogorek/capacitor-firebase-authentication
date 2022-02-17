@@ -130,6 +130,16 @@ public class FirebaseAuthenticationPlugin extends Plugin {
     }
 
     @PluginMethod
+    public void sendPasswordResetEmail(PluginCall call) {
+        implementation.sendPasswordResetEmail(call);
+    }
+
+    @PluginMethod
+    public void createUserWithEmailAndPassword(PluginCall call) {
+        implementation.createUserWithEmailAndPassword(call);
+    }
+
+    @PluginMethod
     public void signOut(PluginCall call) {
         implementation.signOut(call);
     }
