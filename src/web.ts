@@ -143,17 +143,17 @@ export class FirebaseAuthenticationWeb
     return this.createSignInResult(result.user, null);
   }
 
-  public async sendPasswordResetEmail(email: string
+  public async sendPasswordResetEmail(options: SignInWithEmailAndPasswordOptions
   ): Promise<void> {
     console.log('sending reset email...')
     const auth = getAuth();
-    return sendPasswordResetEmail(auth, email);
+    return sendPasswordResetEmail(auth, options.email);
   }
-  public async createUserWithEmailAndPassword(email: string, password: string
+  public async createUserWithEmailAndPassword(options: SignInWithEmailAndPasswordOptions
   ): Promise<User|null> {
     console.log('creating user')
     const auth = getAuth();
-    const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
+    const userCredentials = await createUserWithEmailAndPassword(auth, options.email, options.password);
     await sendEmailVerification(userCredentials.user);
     return this.createUserResult(userCredentials.user);
   }

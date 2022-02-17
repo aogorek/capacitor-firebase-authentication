@@ -89,8 +89,8 @@ export interface FirebaseAuthenticationPlugin {
      * In this case you have to use the `signInWithCustomToken` interface of the Firebase JS SDK directly.
      */
     signInWithEmailAndPassword(options: SignInWithEmailAndPasswordOptions): Promise<SignInResult>;
-    sendPasswordResetEmail(email: string): Promise<void>;
-    createUserWithEmailAndPassword(email: string, password: string): Promise<User | null>;
+    sendPasswordResetEmail(options: SignInWithEmailAndPasswordOptions): Promise<void>;
+    createUserWithEmailAndPassword(options: SignInWithEmailAndPasswordOptions): Promise<User | null>;
     /**
      * Starts the Custom Token sign-in flow.
      *

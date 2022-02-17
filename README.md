@@ -441,12 +441,12 @@ In this case you have to use the `signInWithCustomToken` interface of the Fireba
 ### sendPasswordResetEmail(...)
 
 ```typescript
-sendPasswordResetEmail(email: string) => Promise<void>
+sendPasswordResetEmail(options: SignInWithEmailAndPasswordOptions) => Promise<void>
 ```
 
-| Param       | Type                |
-| ----------- | ------------------- |
-| **`email`** | <code>string</code> |
+| Param         | Type                                                                                            |
+| ------------- | ----------------------------------------------------------------------------------------------- |
+| **`options`** | <code><a href="#signinwithemailandpasswordoptions">SignInWithEmailAndPasswordOptions</a></code> |
 
 --------------------
 
@@ -454,13 +454,12 @@ sendPasswordResetEmail(email: string) => Promise<void>
 ### createUserWithEmailAndPassword(...)
 
 ```typescript
-createUserWithEmailAndPassword(email: string, password: string) => Promise<User | null>
+createUserWithEmailAndPassword(options: SignInWithEmailAndPasswordOptions) => Promise<User | null>
 ```
 
-| Param          | Type                |
-| -------------- | ------------------- |
-| **`email`**    | <code>string</code> |
-| **`password`** | <code>string</code> |
+| Param         | Type                                                                                            |
+| ------------- | ----------------------------------------------------------------------------------------------- |
+| **`options`** | <code><a href="#signinwithemailandpasswordoptions">SignInWithEmailAndPasswordOptions</a></code> |
 
 **Returns:** <code>Promise&lt;<a href="#user">User</a> | null&gt;</code>
 
