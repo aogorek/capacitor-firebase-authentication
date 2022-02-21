@@ -97,6 +97,10 @@ public class FirebaseAuthenticationPlugin: CAPPlugin {
     @objc func signInWithCustomToken(_ call: CAPPluginCall) {
         implementation?.signInWithCustomToken(call)
     }
+    
+    @objc func signInWithEmailAndPassword(_ call: CAPPluginCall) {
+        implementation?.signInWithEmailAndPassword(call)
+    }
 
     @objc func signOut(_ call: CAPPluginCall) {
         implementation?.signOut(call)
