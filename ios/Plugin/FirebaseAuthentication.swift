@@ -132,6 +132,44 @@ public typealias AuthStateChangedObserver = () -> Void
             savedCall.resolve(result)
         }
     }
+    @objc func createUserWithEmailAndPassword(_ call: CAPPluginCall) {
+        
+        let email = call.getString("email", "")
+        let password = call.getString("password", "")
+
+        self.savedCall = call
+        Auth.auth().createUser(withEmail: email, password: password) { _, error in
+            if let error = error {
+                self.handleFailedSignIn(message: nil, error: error)
+                return
+            }
+            guard let savedCall = self.savedCall else {
+                return
+            }
+            let user = self.getCurrentUser()
+            
+            user?.sendEmailVerification(completion: { (error) in
+                let result = FirebaseAuthenticationHelper.createSignInResult(credential: nil, user: user, idToken: nil, nonce: nil)
+                savedCall.resolve(result)
+            })
+            
+        }
+    }
+    @objc func sendPasswordResetEmail(_ call: CAPPluginCall) {
+        
+        let email = call.getString("email", "")
+        self.savedCall = call
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            if let error = error {
+                self.handleFailedSignIn(message: nil, error: error)
+                return
+            }
+            guard let savedCall = self.savedCall else {
+                return
+            }
+            savedCall.resolve()
+        }
+    }
 
     @objc func signOut(_ call: CAPPluginCall) {
         do {

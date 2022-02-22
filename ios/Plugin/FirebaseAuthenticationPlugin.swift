@@ -101,7 +101,12 @@ public class FirebaseAuthenticationPlugin: CAPPlugin {
     @objc func signInWithEmailAndPassword(_ call: CAPPluginCall) {
         implementation?.signInWithEmailAndPassword(call)
     }
-
+    @objc func createUserWithEmailAndPassword(_ call: CAPPluginCall) {
+        implementation?.createUserWithEmailAndPassword(call)
+    }
+    @objc func sendPasswordResetEmail(_ call: CAPPluginCall) {
+        implementation?.sendPasswordResetEmail(call)
+    }
     @objc func signOut(_ call: CAPPluginCall) {
         implementation?.signOut(call)
     }
