@@ -14,13 +14,16 @@ public class FirebaseAuthenticationPlugin: CAPPlugin {
     private var implementation: FirebaseAuthentication?
 
     override public func load() {
+        print("load")
         self.implementation = FirebaseAuthentication(plugin: self, config: firebaseAuthenticationConfig())
         
     }
     
     override public func addListener(_ call: CAPPluginCall) {
+        print ("addListener")
         super.addListener(call);
-        implementation?.initListeners();
+        self.implementation?.initListeners();
+        print("settingObserver")
         self.implementation?.authStateObserver = { [weak self] in
             self?.handleAuthStateChange()
         }
@@ -122,6 +125,7 @@ public class FirebaseAuthenticationPlugin: CAPPlugin {
     }
 
     @objc func handleAuthStateChange() {
+        print ("handleAuthStateChange");
         let user = implementation?.getCurrentUser()
         let userResult = FirebaseAuthenticationHelper.createUserResult(user)
         var result = JSObject()

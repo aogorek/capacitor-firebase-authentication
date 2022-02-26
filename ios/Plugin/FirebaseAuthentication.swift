@@ -20,6 +20,7 @@ public typealias AuthStateChangedObserver = () -> Void
 
     init(plugin: FirebaseAuthenticationPlugin, config: FirebaseAuthenticationConfig) {
         self.plugin = plugin
+        print("plugin constructor")
         self.config = config
         super.init()
         if FirebaseApp.app() == nil {
@@ -29,6 +30,7 @@ public typealias AuthStateChangedObserver = () -> Void
     }
 
     @objc func initListeners() {
+        print("initializing listeners");
         self.initAuthProviderHandlers(config: config)
         Auth.auth().addStateDidChangeListener {_, _ in
             self.authStateObserver?()
