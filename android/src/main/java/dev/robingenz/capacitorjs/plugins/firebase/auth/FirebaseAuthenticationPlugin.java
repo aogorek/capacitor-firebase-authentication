@@ -40,6 +40,7 @@ public class FirebaseAuthenticationPlugin extends Plugin {
     public void addListener(PluginCall call) {
         super.addListener(call);
         if (implementation == null) {
+            implementation.initializeListeners();
             implementation.setAuthStateChangeListener(this::updateAuthState);
         }
 

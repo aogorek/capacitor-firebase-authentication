@@ -54,15 +54,19 @@ public class FirebaseAuthentication {
         this.config = config;
         firebaseAuthInstance = FirebaseAuth.getInstance();
         this.initAuthProviderHandlers(config);
+    }
+
+    public void initializeListeners() {
         this.firebaseAuthStateListener =
-            firebaseAuth -> {
-                if (authStateChangeListener != null) {
-                    Log.d(FirebaseAuthenticationPlugin.TAG, "emmiting onAuthStateChanged + " + firebaseAuth);
-                    authStateChangeListener.onAuthStateChanged();
-                }
-            };
+                firebaseAuth -> {
+                    if (authStateChangeListener != null) {
+                        Log.d(FirebaseAuthenticationPlugin.TAG, "emmiting onAuthStateChanged + " + firebaseAuth);
+                        authStateChangeListener.onAuthStateChanged();
+                    }
+                };
         firebaseAuthInstance.addAuthStateListener(this.firebaseAuthStateListener);
         Log.d(FirebaseAuthenticationPlugin.TAG, "added listener");
+
     }
 
     public void setAuthStateChangeListener(@Nullable AuthStateChangeListener listener) {
