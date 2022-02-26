@@ -49,6 +49,7 @@ public class FirebaseAuthentication {
 
     public FirebaseAuthentication(FirebaseAuthenticationPlugin plugin, FirebaseAuthenticationConfig config) {
         Log.d(FirebaseAuthenticationPlugin.TAG, "FirebaseAuthentication constructor");
+        Log.d(FirebaseAuthenticationPlugin.TAG, "config :" + config);
         this.plugin = plugin;
         this.config = config;
         firebaseAuthInstance = FirebaseAuth.getInstance();
@@ -56,19 +57,22 @@ public class FirebaseAuthentication {
         this.firebaseAuthStateListener =
             firebaseAuth -> {
                 if (authStateChangeListener != null) {
-                    Log.d(FirebaseAuthenticationPlugin.TAG, "emmiting onAuthStateChanged");
+                    Log.d(FirebaseAuthenticationPlugin.TAG, "emmiting onAuthStateChanged + " + firebaseAuth);
                     authStateChangeListener.onAuthStateChanged();
                 }
             };
         firebaseAuthInstance.addAuthStateListener(this.firebaseAuthStateListener);
+        Log.d(FirebaseAuthenticationPlugin.TAG, "added listener");
     }
 
     public void setAuthStateChangeListener(@Nullable AuthStateChangeListener listener) {
+        Log.d(FirebaseAuthenticationPlugin.TAG, "setAuthStateChangeListener");
         this.authStateChangeListener = listener;
     }
 
     @Nullable
     public AuthStateChangeListener getAuthStateChangeListener() {
+        Log.d(FirebaseAuthenticationPlugin.TAG, "getAuthStateChangeListener");
         return authStateChangeListener;
     }
 
