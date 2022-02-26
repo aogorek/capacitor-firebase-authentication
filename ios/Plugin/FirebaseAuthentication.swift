@@ -25,12 +25,16 @@ public typealias AuthStateChangedObserver = () -> Void
         if FirebaseApp.app() == nil {
             FirebaseApp.configure()
         }
+        
+    }
+
+    @objc func initListeners() {
         self.initAuthProviderHandlers(config: config)
         Auth.auth().addStateDidChangeListener {_, _ in
             self.authStateObserver?()
         }
     }
-
+    
     @objc func getCurrentUser() -> User? {
         return Auth.auth().currentUser
     }
