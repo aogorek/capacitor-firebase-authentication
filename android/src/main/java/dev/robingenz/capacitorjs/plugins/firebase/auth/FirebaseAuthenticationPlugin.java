@@ -26,7 +26,6 @@ public class FirebaseAuthenticationPlugin extends Plugin {
         Log.d(FirebaseAuthenticationPlugin.TAG, "loadConfig");
         config = getFirebaseAuthenticationConfig();
         implementation = new FirebaseAuthentication(this, config);
-        implementation.setAuthStateChangeListener(this::updateAuthState);
     }
 
     @PluginMethod
@@ -37,7 +36,14 @@ public class FirebaseAuthenticationPlugin extends Plugin {
         result.put("user", userResult);
         call.resolve(result);
     }
+    @PluginMethod(returnType = PluginMethod.RETURN_NONE)
+    public void addListener(PluginCall call) {
+        super.addListener(call);
+        if (implementation == null) {
+            implementation.setAuthStateChangeListener(this::updateAuthState);
+        }
 
+    }
     @PluginMethod
     public void getIdToken(PluginCall call) {
         Boolean forceRefresh = call.getBoolean("forceRefresh", false);
