@@ -1,6 +1,8 @@
 package dev.robingenz.capacitorjs.plugins.firebase.auth;
 
 import android.content.Intent;
+import android.util.Log;
+
 import androidx.activity.result.ActivityResult;
 import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;
@@ -21,6 +23,7 @@ public class FirebaseAuthenticationPlugin extends Plugin {
     private FirebaseAuthentication implementation;
 
     public void load() {
+        Log.d(FirebaseAuthenticationPlugin.TAG, "loadConfig");
         config = getFirebaseAuthenticationConfig();
         implementation = new FirebaseAuthentication(this, config);
         implementation.setAuthStateChangeListener(this::updateAuthState);
@@ -155,7 +158,9 @@ public class FirebaseAuthenticationPlugin extends Plugin {
         super.startActivityForResult(call, intent, callbackName);
     }
 
+    @Override
     public void notifyListeners(String eventName, JSObject data) {
+        Log.d(FirebaseAuthenticationPlugin.TAG, "pluginnotifyListeners "+ eventName);
         super.notifyListeners(eventName, data);
     }
 
@@ -166,6 +171,7 @@ public class FirebaseAuthenticationPlugin extends Plugin {
     }
 
     private void updateAuthState() {
+        Log.d(FirebaseAuthenticationPlugin.TAG, "updateAuthState ");
         FirebaseUser user = implementation.getCurrentUser();
         JSObject userResult = FirebaseAuthenticationHelper.createUserResult(user);
         JSObject result = new JSObject();

@@ -48,6 +48,7 @@ public class FirebaseAuthentication {
     private PlayGamesAuthProviderHandler playGamesAuthProviderHandler;
 
     public FirebaseAuthentication(FirebaseAuthenticationPlugin plugin, FirebaseAuthenticationConfig config) {
+        Log.d(FirebaseAuthenticationPlugin.TAG, "FirebaseAuthentication constructor");
         this.plugin = plugin;
         this.config = config;
         firebaseAuthInstance = FirebaseAuth.getInstance();
@@ -55,6 +56,7 @@ public class FirebaseAuthentication {
         this.firebaseAuthStateListener =
             firebaseAuth -> {
                 if (authStateChangeListener != null) {
+                    Log.d(FirebaseAuthenticationPlugin.TAG, "emmiting onAuthStateChanged");
                     authStateChangeListener.onAuthStateChanged();
                 }
             };
