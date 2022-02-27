@@ -24,8 +24,11 @@ public typealias AuthStateChangedObserver = () -> Void
         self.config = config
         super.init()
         if FirebaseApp.app() == nil {
+            print ("configuring app")
             FirebaseApp.configure()
+            print ("app configured")
         }
+        self.initListeners();
         
     }
 
@@ -33,6 +36,7 @@ public typealias AuthStateChangedObserver = () -> Void
         print("initializing listeners");
         self.initAuthProviderHandlers(config: config)
         Auth.auth().addStateDidChangeListener {_, _ in
+            print("authStateChanged2")
             self.authStateObserver?()
         }
     }
