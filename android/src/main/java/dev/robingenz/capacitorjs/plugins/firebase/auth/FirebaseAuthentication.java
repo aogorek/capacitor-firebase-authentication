@@ -52,8 +52,10 @@ public class FirebaseAuthentication {
         Log.d(FirebaseAuthenticationPlugin.TAG, "config :" + config);
         this.plugin = plugin;
         this.config = config;
+        FirebaseAuth.getInstance()
         firebaseAuthInstance = FirebaseAuth.getInstance();
         this.initAuthProviderHandlers(config);
+        this.initializeListeners();
     }
 
     public void initializeListeners() {
